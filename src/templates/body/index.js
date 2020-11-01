@@ -1,6 +1,6 @@
 import React,{Component} from "react"
 import {Switch,Route} from "react-router-dom"
-import {Home} from "../../pages";
+import {Home, Cuti} from "../../pages";
 import "../../assets/css/main.css"
 import "../../assets/css/fontawesome-all.min.css"
 
@@ -10,10 +10,11 @@ class Body extends Component{
         this.state={}
     }
     showPage = () => {
-        const {page,status} = this.props
+        // const {page,status} = this.props
         return (
             <Switch>
                 <Route exact path="/" children={(props) => <Home/>} />
+                <Route exact path="/cuti" children={(props) => <Cuti/>}/>
             </Switch>
         )
     }

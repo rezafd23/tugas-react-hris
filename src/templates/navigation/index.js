@@ -7,7 +7,7 @@ class Nav extends Component{
     }
     render() {
         return <>
-            <div id="sidebar">
+            {/* <div id="sidebar">
                 <div className="inner">
 
                     <section id="search" className="alt">
@@ -46,7 +46,7 @@ class Nav extends Component{
                             </li>
                             <li><a href="#">Maximus Erat</a></li>
                             <li><a href="#">Sapien Mauris</a></li>
-                            <li><a href="#">Amet Lacinia</a></li>
+                            <li><a href="cuti">CUTI DAN IZIN</a></li>
                         </ul>
                     </nav>
 
@@ -57,17 +57,17 @@ class Nav extends Component{
                         <div className="mini-posts">
                             <article>
                                 <a href="#" className="image"><img src="../../../public/assets/images/pic07.jpg"
-                                                                   alt=""/></a>
+                                                                alt=""/></a>
                                 <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
                             </article>
                             <article>
                                 <a href="#" className="image"><img src="../../../public/assets/images/pic08.jpg"
-                                                                   alt=""/></a>
+                                                                alt=""/></a>
                                 <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
                             </article>
                             <article>
                                 <a href="#" className="image"><img src="../../../public/assets/images/pic09.jpg"
-                                                                   alt=""/></a>
+                                                                alt=""/></a>
                                 <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
                             </article>
                         </div>
@@ -100,7 +100,7 @@ class Nav extends Component{
 
                 </div>
             </div>
-        </>
+         */} </>
     }
 }
 export default Nav

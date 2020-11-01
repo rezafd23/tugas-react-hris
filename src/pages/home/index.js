@@ -4,26 +4,25 @@ import "../../assets/css/fontawesome-all.min.css"
 import mainImage from "../../assets/images/pic10.jpg"
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         return <>
             <div className="inner">
-
                 <header id="header">
                     <a href="index.html" className="logo"><strong>Editorial</strong> by HTML5 UP</a>
                     <ul className="icons">
-                        <li><a href="#" className="icon brands fa-twitter"><span className="label">Twitter</span></a>
+                        <li><a href="#twitter" className="icon brands fa-twitter"><span className="label">Twitter</span></a>
                         </li>
-                        <li><a href="#" className="icon brands fa-facebook-f"><span
+                        <li><a href="#facebook" className="icon brands fa-facebook-f"><span
                             className="label">Facebook</span></a></li>
-                        <li><a href="#" className="icon brands fa-snapchat-ghost"><span
+                        <li><a href="#snapchat" className="icon brands fa-snapchat-ghost"><span
                             className="label">Snapchat</span></a></li>
-                        <li><a href="#" className="icon brands fa-instagram"><span
+                        <li><a href="#instagram" className="icon brands fa-instagram"><span
                             className="label">Instagram</span></a></li>
-                        <li><a href="#" className="icon brands fa-medium-m"><span className="label">Medium</span></a>
+                        <li><a href="#instagram" className="icon brands fa-medium-m"><span className="label">Medium</span></a>
                         </li>
                     </ul>
                 </header>
@@ -40,7 +39,7 @@ class Home extends Component {
                             egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
                             Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
                         <ul className="actions">
-                            <li><a href="#" className="button big">Learn More</a></li>
+                            <li><a href="#learnmore" className="button big">Learn More</a></li>
                         </ul>
                     </div>
                     <span className="image object">
@@ -94,57 +93,57 @@ class Home extends Component {
                     </header>
                     <div className="posts">
                         <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic01.jpg" alt=""/></a>
+                            <a href="#article" className="image"><img src="../../assets/images/pic01.jpg" alt=""/></a>
                             <h3>Interdum aenean</h3>
                             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
                                 facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
                             <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
+                                <li><a href="#more" className="button">More</a></li>
                             </ul>
                         </article>
                         <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic02.jpg" alt=""/></a>
+                            <a href="#article" className="image"><img src="../../assets/images/pic02.jpg" alt=""/></a>
                             <h3>Nulla amet dolore</h3>
                             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
                                 facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
                             <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
+                                <li><a href="m#more" className="button">More</a></li>
                             </ul>
                         </article>
                         <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic03.jpg" alt=""/></a>
+                            <a href="#article" className="image"><img src="../../assets/images/pic03.jpg" alt=""/></a>
                             <h3>Tempus ullamcorper</h3>
                             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
                                 facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
                             <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
+                                <li><a href="#more" className="button">More</a></li>
                             </ul>
                         </article>
                         <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic04.jpg" alt=""/></a>
+                            <a href="#article" className="image"><img src="../../assets/images/pic04.jpg" alt=""/></a>
                             <h3>Sed etiam facilis</h3>
                             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
                                 facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
                             <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
+                                <li><a href="#more" className="button">More</a></li>
                             </ul>
                         </article>
                         <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic05.jpg" alt=""/></a>
+                            <a href="#article" className="image"><img src="../../assets/images/pic05.jpg" alt=""/></a>
                             <h3>Feugiat lorem aenean</h3>
                             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
                                 facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
                             <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
+                                <li><a href="#more" className="button">More</a></li>
                             </ul>
                         </article>
                         <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic06.jpg" alt=""/></a>
+                            <a href="#article" className="image"><img src="../../assets/images/pic06.jpg" alt=""/></a>
                             <h3>Amet varius aliquam</h3>
                             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
                                 facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
                             <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
+                                <li><a href="#more" className="button">More</a></li>
                             </ul>
                         </article>
                     </div>

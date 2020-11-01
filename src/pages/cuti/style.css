@@ -1,0 +1,13 @@
+.cuti {
+    padding: 100px;
+}
+
+.tambahCuti {
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.tableCuti th,
+td {
+    text-align: center;
+}
