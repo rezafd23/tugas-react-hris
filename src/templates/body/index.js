@@ -1,6 +1,6 @@
 import React,{Component} from "react"
 import {Switch,Route} from "react-router-dom"
-import {Home} from "../../pages";
+import {Home, Payroll} from "../../pages";
 import "../../assets/css/main.css"
 import "../../assets/css/fontawesome-all.min.css"
 
@@ -14,6 +14,7 @@ class Body extends Component{
         return (
             <Switch>
                 <Route exact path="/" children={(props) => <Home/>} />
+                <Route exact path="/payroll" children={(props) => <Payroll/>} />
             </Switch>
         )
     }

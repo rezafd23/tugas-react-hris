@@ -1,3 +1,4 @@
 import Home from "./home";
+import Payroll from "./payroll";
 
-export {Home}
+export {Home,Payroll}
