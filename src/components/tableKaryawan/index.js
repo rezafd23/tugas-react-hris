@@ -34,19 +34,19 @@ const columns = [
     text: "Action",
     headerStyle: {
       backgroundColor: "#c8e6c9",
-      width: "24%",
+      width: "30%",
     },
     formatter: (rowContent, row) => {
       return (
         <div>
           {/* <Link to={"details/"+row.id}> */}
-          <Link to={`details/${row.id}`}>
-            <button className="btn btn-info ml-2 mr-3">Detail</button>
+          <Link to={`/employee/details/${row.id}`}>
+            <button className="btn btn-info ml-3 ">Detail</button>
           </Link>
-          <Link to={`edit/${row.id}`}>
-            <button className="btn btn-warning mr-3">Edit</button>
+          <Link to={`/employee/edit/${row.id}`}>
+            <button className="btn btn-warning ml-2 mr-2 ">Edit</button>
           </Link>
-          <Link to={`delete/${row.id}`}>
+          <Link to={`/employee/delete/${row.id}`}>
             <button className="btn btn-danger ">Delete</button>
           </Link>
         </div>
@@ -82,7 +82,7 @@ class TableKaryawan extends Component {
               {(props) => (
                 <div className="mt-5">
                   <div className="add-karyawan float-left">
-                    <Link to={"/create"}>
+                    <Link to={"/employee/create"}>
                       <button className="btn btn-primary">Tambah Data</button>
                     </Link>
                   </div>

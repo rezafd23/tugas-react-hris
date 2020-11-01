@@ -8,7 +8,7 @@ export default class EditFormKaryawan extends Component {
         <div className="container">
           <h1>Edit Form</h1>
           <hr />
-          <Link to={"/"}>
+          <Link to={"/employee"}>
             <button className="btn btn-secondary">Back</button>
           </Link>
         </div>

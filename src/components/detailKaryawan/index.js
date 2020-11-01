@@ -15,7 +15,7 @@ class DetailFormKaryawan extends Component {
         <div className="container">
           <h1>Detail Karyawan {this.props.match.params.id}</h1>
           <hr />
-          <Link to={"/"}>
+          <Link to={"/employee"}>
             <button className="btn btn-secondary">Back</button>
           </Link>
 
