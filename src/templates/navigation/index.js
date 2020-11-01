@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-
+import { Link } from 'react-router-dom';
 class Nav extends Component{
     constructor(props) {
         super(props);
@@ -7,7 +7,9 @@ class Nav extends Component{
     }
     render() {
         return <>
-            <div id="sidebar">
+
+        {/* <li><a href="login">Login</a></li> */}
+            {/* <div id="sidebar">
                 <div className="inner">
 
                     <section id="search" className="alt">
@@ -15,14 +17,14 @@ class Nav extends Component{
                             <input type="text" name="query" id="query" placeholder="Search"/>
                         </form>
                     </section>
-
+                    <li><a href="login">Login</a></li>
                     <nav id="menu">
                         <header className="major">
                             <h2>Menu</h2>
                         </header>
                         <ul>
                             <li><a href="index.html">Homepage</a></li>
-                            <li><a href="generic.html">Generic</a></li>
+                            <li><a href="login">Login</a></li>
                             <li><a href="elements.html">Elements</a></li>
                             <li>
                                 <span className="opener">Submenu</span>
@@ -46,7 +48,7 @@ class Nav extends Component{
                             </li>
                             <li><a href="#">Maximus Erat</a></li>
                             <li><a href="#">Sapien Mauris</a></li>
-                            <li><a href="#">Amet Lacinia</a></li>
+                            <li><a href="login">Login</a></li>
                         </ul>
                     </nav>
 
@@ -99,7 +101,7 @@ class Nav extends Component{
                     </footer>
 
                 </div>
-            </div>
+            </div> */}
         </>
     }
 }
