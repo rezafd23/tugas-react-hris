@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import {TrTh} from "../"
-
-class Thead extends Component {
+class Th extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     render() { 
         return ( 
-            <thead>
-                <TrTh th={this.props.th}/>
-            </thead>
+            <th>{this.props.children}</th>
          );
     }
 }
  
-export default Thead;
+export default Th;

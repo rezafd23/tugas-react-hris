@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
 import "./style.css"
-import {Modals, Button} from "../../components/presensi_home"
+import {Modals, Button, TabelPresensi} from "../../components/presensi_home"
 import moment from "moment"
-import Table from "../../components/presensi_home/tabel-presensi"
 
 const $ = require('jquery')
 $.Datatable = require('datatables.net')
@@ -15,10 +14,12 @@ class Presensi extends Component {
             modalShow: false,
             jam: "",
             tanggal: "",
+            // <-- Data Session Login -->
             nik: "",
             nama: "",
             jabatan: "",
             status: "",
+            // <-- ! -->
             statusPresensi: "",
             dataKaryawan: props.dataKaryawan,// get dari redux
             dataPresensi: props.dataPresensi,// get dari redux
@@ -28,11 +29,11 @@ class Presensi extends Component {
     componentDidMount(){
         this.setDateTime()
         this.setState({
-            // set default value untuk form presensi karyawan
+            // set default value untuk form presensi karyawan (data session) / untuk isi otomatis form sesuai data yang login
             nik: "20201005",
             nama: "homo sapiens",
             jabatan: "Application Owner",
-            status: "HR" // status pembeda aksi di tabel
+            status: "" // status pembeda aksi di tabel
         })
     }
 
@@ -65,9 +66,6 @@ class Presensi extends Component {
         }
         let dataBaru = this.state.dataPresensi
         dataBaru.push(dataForm)
-        // let updateState = await this.setState({
-        //                     dataPresensi: dataBaru
-        //                 }) // update dataPresensi di state
         this.setState({
             dataPresensi: dataBaru
         })
@@ -96,6 +94,7 @@ class Presensi extends Component {
 
     }
 
+    //handler klik tombol edit per data di tabel (ambil data di tabel dan tampilkan di form)
     onClickEdit = async (index) =>{
         await this.onClickTambah()
         let form = document.formPresensi
@@ -114,6 +113,7 @@ class Presensi extends Component {
         form.statusPresensi.value = dataPresensi.statusPresensi
     }
 
+    // handler simpan perubahan edit data
     onClickSimpanEdit = async () => {
         const form = document.formPresensi
         let dataForm = {
@@ -137,11 +137,12 @@ class Presensi extends Component {
     }
 
     // handler isi tabel (sumber: redux)
-    renderTable = () => {
+    renderTable = (keyword="") => {
         const {dataPresensi, dataKaryawan} = this.props
+        let dataFilter = dataPresensi.filter(data=> data.nik.indexOf(keyword)>=0)
         let tr = []
-        if(dataPresensi){ // cek dataPresensi
-            dataPresensi.forEach((element,index) => {
+        if(dataFilter){ // cek dataPresensi
+            dataFilter.forEach((element,index) => {
                 let aksi = 
                             <>
                                 <Button className="button small" onClick={() => this.onClickEdit(index)}>Edit</Button>&nbsp;
@@ -178,22 +179,7 @@ class Presensi extends Component {
                         <div style={{display: "flex", justifyContent: "space-between"}}>
                                 <button className="button primary icon solid fa-plus-circle" onClick={() => this.onClickTambah()} style={{marginBottom: 15}}>Tambah Presensi</button>
                         </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Tanggal</th>
-                                    <th>NIK</th>
-                                    <th>Nama Karyawan</th>
-                                    <th>Jabatan</th>
-                                    <th>Jam</th>
-                                    <th>Status Presensi</th>
-                                    {this.state.status==="HR"?<th>Aksi</th>:<></>}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderTable()}
-                            </tbody>
-                        </table>
+                        <TabelPresensi renderTable={this.renderTable(this.state.status==="HR"?"":this.state.nik)} status={this.state.status}/>
                     </div>
                 </div>
                 <Modals 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Thead} from "../"
 const $ = require('jquery')
 $.Datatable = require('datatables.net')
 
@@ -7,32 +8,14 @@ class TabelPresensi extends Component {
         super(props);
         this.state = {  }
     }
-    async componentDidMount(){
-        await this.setState({
-            data: this.props.data
-        })
-        this.$el = $(this.el)
-        this.$el.DataTable(
-            {
-                data: this.state.data,
-                columns: [
-                    {title:"Tanggal"},
-                    {title:"Nomor Karyawan"},
-                    {title:"Nama"},
-                    {title:"Jabatan"},
-                    {title:"Jam"},
-                    {title:"Status"},
-                    {title:"Aksi"},
-                ],
-                info: true,
-                lengthChange: false,
-                search: false
-            }
-        )
-    }
     render() { 
         return ( 
-            <table className="display" width="100%" ref={el => this.el = el}></table>
+            <table>
+                <Thead th={["Tanggal", "NIK", "Nama Karyawan", "Jabatan", "Jam", "Status Presensi", this.props.status==="HR"?"Aksi":""]} />
+                <tbody>
+                    {this.props.renderTable}
+                </tbody>
+            </table>
          );
     }
 }

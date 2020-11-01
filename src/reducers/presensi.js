@@ -13,7 +13,13 @@ const initialState = {
             tanggal: "31/10/2020",
             jam: "15:38",
             statusPresensi: "Pulang"
-        }
+        },
+        {
+          nik: "20201003",
+          tanggal: "31/10/2020",
+          jam: "15:38",
+          statusPresensi: "Pulang"
+      }
     ],
     dataKaryawan: [
         {
