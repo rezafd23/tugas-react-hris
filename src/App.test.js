@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+// import logo from './logo.svg';
+import './App.css';
+import {Body,Nav} from "./templates"
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+function App() {
+    return (
+            // <body className="is-preload">
+            <div id="wrapper">
+                <Body/>
+                <Nav/>
+            </div>
+            // </body>
+
+    );
+}
+
+export default App;

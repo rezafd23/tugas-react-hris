@@ -1,3 +1,4 @@
 import Home from "./home";
+import Presensi from "./presensi"
 
-export {Home}
+export {Home, Presensi}

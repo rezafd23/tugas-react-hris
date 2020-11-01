@@ -1,151 +1,121 @@
 import React, {Component} from "react"
 import "../../assets/css/main.css"
 import "../../assets/css/fontawesome-all.min.css"
-import mainImage from "../../assets/images/pic10.jpg"
+import { Pie, Doughnut } from 'react-chartjs-2'
+import { connect } from "react-redux";
 
 class Home extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            dataKaryawan: this.props.dataKaryawan, // get data dari redux
+            jabatan: "", // state untuk jabatan dari componentdidmount
+            statusPernikahan: "" // state untuk status pernikahan dari componentdidmount
+        }
+    }
+
+    async componentDidMount() {
+        let jabatan = []
+        let statusPernikahan = []
+        await this.props.dataKaryawan.forEach(element => {
+            // jabatan.filter(data => console.log(data))
+            if(!jabatan.includes(element.jabatan)){
+                jabatan.push(element.jabatan)
+            }else{
+                jabatan = jabatan
+            }
+        })
+        await this.props.dataKaryawan.forEach(element => {
+            // jabatan.filter(data => console.log(data))
+            if(!statusPernikahan.includes(element.statusPernikahan)){
+                statusPernikahan.push(element.statusPernikahan)
+            }else{
+                statusPernikahan = statusPernikahan
+            }
+        })
+        this.setState({
+            jabatan,
+            statusPernikahan
+        })
+    }
+
+    // return data untuk chart pie
+    dataPie = () => {
+        const labels = this.state.jabatan
+        let data =[]
+        let backgroudColor = []
+        if(labels){
+            labels.forEach(element => {
+                let count = this.state.dataKaryawan.filter(karyawan => karyawan.jabatan === element)
+                data.push(count.length)
+            });
+        }
+        for (let index = 0; index < data.length; index++) {
+            backgroudColor.push(`rgba(${Math.random()*256}, ${Math.random()*256}, ${Math.random()*256}, 0.4)`) // random chart color           
+        }
+        return {
+            labels: this.state.jabatan,
+            datasets: [
+            {
+                label: 'Perbandingan Jabatan',
+                data: data,
+                backgroundColor: backgroudColor,
+                borderWidth: 1,
+            },
+            ], 
+        }
+    }
+
+    dataDoughnut = () => {
+        const labels = this.state.statusPernikahan
+        let data =[]
+        let backgroudColor = []
+        if(labels){
+            labels.forEach(element => {
+                let count = this.state.dataKaryawan.filter(karyawan => karyawan.statusPernikahan === element)
+                data.push(count.length)
+            });
+        }
+        for (let index = 0; index < data.length; index++) {
+            backgroudColor.push(`rgba(${Math.random()*256}, ${Math.random()*256}, ${Math.random()*256}, 0.4)`) // random chart color           
+        }
+        return {
+            labels: this.state.statusPernikahan,
+            datasets: [
+            {
+                label: 'Perbandingan Status Pernikahan',
+                data: data,
+                backgroundColor: backgroudColor,
+                borderWidth: 1,
+            },
+            ], 
+        }
     }
 
     render() {
+        console.log(this.state.statusPernikahan);
         return <>
             <div className="inner">
-
-                <header id="header">
-                    <a href="index.html" className="logo"><strong>Editorial</strong> by HTML5 UP</a>
-                    <ul className="icons">
-                        <li><a href="#" className="icon brands fa-twitter"><span className="label">Twitter</span></a>
-                        </li>
-                        <li><a href="#" className="icon brands fa-facebook-f"><span
-                            className="label">Facebook</span></a></li>
-                        <li><a href="#" className="icon brands fa-snapchat-ghost"><span
-                            className="label">Snapchat</span></a></li>
-                        <li><a href="#" className="icon brands fa-instagram"><span
-                            className="label">Instagram</span></a></li>
-                        <li><a href="#" className="icon brands fa-medium-m"><span className="label">Medium</span></a>
-                        </li>
-                    </ul>
+                <header id="header" style={{display: "block"}}>
+                    <h1 style={{display: "inline"}}>HRIS</h1> <span>(Human Resouce Information System)</span>
                 </header>
-
-                <section id="banner">
-                    <div className="content">
-                        <header>
-                            <h1>Hi, I’m Editorial<br/>
-                                by HTML5 UP</h1>
-                            <p>A free and fully responsive site template</p>
-                        </header>
-                        <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante
-                            interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet
-                            egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
-                            Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-                        <ul className="actions">
-                            <li><a href="#" className="button big">Learn More</a></li>
-                        </ul>
-                    </div>
-                    <span className="image object">
-                        <img src={mainImage} alt=""/>
-                    </span>
-                </section>
-
                 <section>
-                    <header className="major">
-                        <h2>Erat lacinia</h2>
-                    </header>
                     <div className="features">
                         <article>
-                            <span className="icon fa-gem"></span>
-                            <div className="content">
-                                <h3>Portitor ullamcorper</h3>
-                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                    facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                            <div className="card">
+                                <div className="card-header text-center">Perbandingan Jabatan</div>
+                                <div className="card-body">
+                                    <Pie data={this.dataPie()} />
+                                </div>
                             </div>
                         </article>
                         <article>
-                            <span className="icon solid fa-paper-plane"></span>
-                            <div className="content">
-                                <h3>Sapien veroeros</h3>
-                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                    facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                            <div className="card">
+                                <div className="card-header text-center">Perbandingan Status Pernikahan</div>
+                                <div className="card-body">
+                                    <Doughnut data={this.dataDoughnut()} />
+                                </div>
                             </div>
-                        </article>
-                        <article>
-                            <span className="icon solid fa-rocket"></span>
-                            <div className="content">
-                                <h3>Quam lorem ipsum</h3>
-                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                    facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            </div>
-                        </article>
-                        <article>
-                            <span className="icon solid fa-signal"></span>
-                            <div className="content">
-                                <h3>Sed magna finibus</h3>
-                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                    facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-
-                <section>
-                    <header className="major">
-                        <h2>Ipsum sed dolor</h2>
-                    </header>
-                    <div className="posts">
-                        <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic01.jpg" alt=""/></a>
-                            <h3>Interdum aenean</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic02.jpg" alt=""/></a>
-                            <h3>Nulla amet dolore</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic03.jpg" alt=""/></a>
-                            <h3>Tempus ullamcorper</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic04.jpg" alt=""/></a>
-                            <h3>Sed etiam facilis</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic05.jpg" alt=""/></a>
-                            <h3>Feugiat lorem aenean</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
-                            </ul>
-                        </article>
-                        <article>
-                            <a href="#" className="image"><img src="../../assets/images/pic06.jpg" alt=""/></a>
-                            <h3>Amet varius aliquam</h3>
-                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam
-                                facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-                            <ul className="actions">
-                                <li><a href="#" className="button">More</a></li>
-                            </ul>
                         </article>
                     </div>
                 </section>
@@ -154,4 +124,9 @@ class Home extends Component {
     }
 }
 
-export default Home
+const mapStateToProps = state => ({
+    dataKaryawan : state.presensi.dataKaryawan
+})
+
+
+export default connect(mapStateToProps)(Home)

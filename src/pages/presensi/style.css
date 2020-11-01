@@ -1,0 +1,74 @@
+  .modal-dialog{
+    min-width: 50%;
+  }
+  .dataTables_paginate{
+    text-align: center;
+  }
+  .paginate_button.previous,.paginate_button.next{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: transparent;
+    border-radius: 0.375em;
+    border: 0;
+    box-shadow: inset 0 0 0 2px #f56a6a;
+    color: #f56a6a !important;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Roboto Slab", serif;
+    font-size: 0.8em;
+    font-weight: 700;
+    height: 3.5em;
+    letter-spacing: 0.075em;
+    line-height: 3.5em;
+    padding: 0 1.5em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap; 
+  }
+  .dataTables_filter{
+    max-width: 400px;
+  }
+  .dataTables_info{
+    color: #f56a6a;
+  }
+  .paginate_button{
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      border-bottom: 0;
+      border-radius: 0.375em;
+      display: inline-block;
+      font-size: 0.8em;
+      font-weight: 600;
+      height: 2em;
+      line-height: 2em;
+      margin: 0 0.4em;
+      min-width: 2em;
+      padding: 0 0.5em;
+      text-align: center;
+      cursor: pointer;
+  }
+  .paginate_button:hover{
+    background-color: #f56a6a;
+    color: #ffffff !important;
+  }
+  .paginate_button.current{
+    background-color: #f56a6a;
+    color: #ffffff !important;
+  }
+  .paginate_button.previous.disabled,.paginate_button.next.disabled {
+    pointer-events: none;
+    opacity: 0.25; 
+  }
+
+  input:read-only{
+    background-color: rgb(232, 233, 233);
+  }
