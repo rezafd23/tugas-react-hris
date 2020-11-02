@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from '../../component';
+import {connect} from "react-redux"
 import "./style.css";
 
 
@@ -6,34 +8,16 @@ class Cuti extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            users:[],
-            userSession:[{
+            userSession:[{   // Penetapan Login
                 id:1,
                 nik: "20201005",
                 nama: "homo sapiens",
                 jabatan: "Application Owner",
                 roleType: 1,
             }],
-            userCuti:[{
-                userId:1,
-                cutiId:1,
-                tanggalPengajuan:"12-12-2020",
-                tanggalBerakhir:"15-12-2020",
-                statusPengajuan:"Menunggu Konfirmasi HRD",
-                alasan:"Sakit",
-            }]
-        }
+            dataKaryawan:props.dataKaryawan, //Redux
+            userCuti: props.userCuti // Redux
     }
-
-    // Ambil Data User Dari API
-    componentDidMount (){
-        fetch('https://my-json-server.typicode.com/dyhancrspo/reactjs-redux-latihan/dataEmployee')
-        .then(response => response.json())
-        .then(json => {
-            this.setState({
-                users:json
-            })
-    })
 }
     addCuti = ()=> {
     console.log(this.state)
@@ -47,12 +31,9 @@ class Cuti extends Component {
         console.log ("Delete Cuti");
     }
 
-    terimaHRD =()=> {
+    terimaHRD =(idx)=> {
         console.log("Diterima HRD")
-        this.setState({
-            statusPengajuan:"Diterima HRD"
-        })
-        window.alert("Pengajuan Diterima ?")
+        console.log(idx)
     }
 
     tolakHRD =()=> {
@@ -70,28 +51,11 @@ class Cuti extends Component {
         <>
             <div className="cuti">
             <h4>Pengajuan Cuti / Izin</h4>
-            <div className="tambahCuti">
-                <label>Nik Karyawan</label>
-                <input type="text" name="title" placeholder="Judul Cuti"></input>
-                <label>Nama Karyawan</label>
-                <input type="text" name="title" placeholder="Judul Cuti"></input>
-                <label>Jabatan</label>
-                <input type="text" name="title" placeholder="Judul Cuti"></input>
-                <label>Tanggal Awal Pengajuan</label>
-                <input type="date" name="title" placeholder="Judul Cuti"></input>
-                <label>Tanggal Akhir Pengajuan</label>
-                <input type="date" name="title" placeholder="Judul Cuti"></input>
-                <label>Alasan Pengajuan</label>
-                <input type="area" name="desc" placeholder="Alasan Cuti"></input> 
-                <br></br>
-                <br></br>
-                <button onClick={this.addCuti}>Ajukan Penambahan Cuti/Izin</button>
-            </div>
-        
             <table className="tableCuti">
                 <thead>
                 <tr>
                     <th>No</th>
+                    <th>User ID</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
                     <th>Alasan</th>
@@ -103,28 +67,27 @@ class Cuti extends Component {
         {
         this.state.userCuti.map((user,idx) =>{
         return      <tr key={idx}>
-                    <td>{idx+1}</td> 
+                    <td>{idx+1}</td>
+                    <td>{user.userId}</td> 
                     <td>{user.tanggalPengajuan}</td> 
                     <td>{user.tanggalBerakhir}</td> 
                     <td>{user.alasan}</td> 
-                    <td>{user.statusPengajuan}</td> 
+                    <td>{user.statusPengajuan}</td>
                     <td>
                         { user.roleType === 0  ?
                         <>
-                        <button onClick={this.editCuti}>Edit</button>
-                        <button onClick={this.deleteCuti}>Delete</button>
+                        <Button onClick={this.editCuti}>Edit</Button>
+                        <Button onClick={this.deleteCuti}>Delete</Button>
                         </>
                         :
                         <>
-                        <button onClick={this.terimaHRD}>Terima</button>
-                        <button onClick={this.tolakHRD}>Tolak</button>
+                        <Button onClick={this.terimaHRD}>Terima</Button>
+                        <Button onClick={this.tolakHRD}>Tolak</Button>
                         </>
                     }
                     </td> 
                     </tr>
-                                    }
-                            )
-        }
+                                })}
         </tbody>
         </table>
         </div>
@@ -132,4 +95,17 @@ class Cuti extends Component {
                 );
     }
 }
-export default Cuti;
+
+const mapStateToProps = state => ({
+    dataKaryawan: state.cuti.dataKaryawan,
+    userCuti: state.cuti.userCuti
+})
+
+const mapDispatchToProps = dispatch => ({
+    update: data => dispatch({
+        type: "Cuti",
+        payload: data
+    }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cuti)
