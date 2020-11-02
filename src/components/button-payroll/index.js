@@ -7,10 +7,10 @@ class ButtonPayroll extends Component{
         super(props);
     }
     render() {
-        const {className,classInput}=this.props
+        const {className,classInput,onClick }=this.props
         return <>
             <div className={className}>
-                <input className={classInput} type="button" value={this.props.value} style={{marginBottom:this.props.margBottom}}/>
+                <input className={classInput} onClick={this.props.onClick} type="button" value={this.props.value} style={{marginBottom:this.props.margBottom}}/>
             </div>
         </>
     }

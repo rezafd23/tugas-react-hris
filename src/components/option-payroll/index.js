@@ -5,9 +5,9 @@ class OptionPayroll extends Component{
         super(props);
     }
     render() {
-        const {value,text}=this.props
+        const {value,text,onChangeSelect}=this.props
         return <>
-            <option value={value}>{text}</option>
+            <option onChange={onChangeSelect} value={value}>{text}</option>
         </>
     }
 }

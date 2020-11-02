@@ -6,11 +6,11 @@ class RowInputPayroll extends Component{
         super(props);
     }
     render() {
-        const {label,type,value,placeholder,jenis,className}=this.props
+        const {label,type,value,placeholder,jenis,className,onChange,readOnly}=this.props
         return<>
             <div className={className}>
                 {label}
-                <InputPayroll jenis={jenis} typeInput={type} valueInput={value} placeholderInput={placeholder}/>
+                <InputPayroll readOnly={readOnly} onChange={onChange} jenis={jenis} typeInput={type} valueInput={value} placeholderInput={placeholder}/>
             </div>
         </>
     }

@@ -6,25 +6,18 @@ class InputPayroll extends Component {
         super();
     }
     render() {
-        const {jenis, typeInput, valueInput, placeholderInput} = this.props
-        console.log("jenis")
-        console.log(jenis)
+        const {jenis, typeInput, valueInput, placeholderInput,onChange,readOnly} = this.props
         if (jenis === "nominal") {
             console.log("nominal")
             return <>
-                <CurrencyInput prefix="Rp." thousandSeparator="."/>
+                <CurrencyInput value={valueInput} onChange={onChange} prefix="Rp." decimalSeparator="," thousandSeparator="."/>
             </>
         } else {
             console.log("nominal123")
             return <>
-                <input type={typeInput} value={valueInput} placeholder={placeholderInput}/>
+                <input type={typeInput} value={valueInput} readOnly={readOnly} onChange={onChange} placeholder={placeholderInput}/>
             </>
         }
-        // return <>
-        //     {this.setComponent}
-        //     {/*<CurrencyInput prefix="Rp." decimalSeparator="," thousandSeparator="."/>*/}
-        // </>
-
     }
 }
 

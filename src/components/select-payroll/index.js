@@ -6,11 +6,11 @@ class SelectPayroll extends Component {
     }
 
     render() {
-        const {name, text,className} = this.props
+        const {name, text,className,value,onChange} = this.props
         return <>
             <div className={className}>
                 {text}
-                <select name={name}>
+                <select name={name} value={value} onChange={onChange}>
                     {this.props.children}
                 </select>
             </div>
