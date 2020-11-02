@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux"
 import "./style.css"
 import {Input} from "../../components"
 
@@ -69,5 +70,7 @@ class Login extends Component {
           );
     }
 }
- 
-export default Login;
+const mapStateToProps = state => ({
+    data: state.data.dataUser
+})
+export default connect(mapStateToProps)(Login)

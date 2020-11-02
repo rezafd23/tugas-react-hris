@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux"
 import {Input} from "../../components"
 import "./style.css"
 
@@ -24,7 +25,7 @@ class Register extends Component {
         this.props.history.push('/Login')
     }
 
-    doRegister = () =>{
+    doRegister = async () =>{
         const {email,password,name}=this.state
         console.log(this.props)
         const {dataUser}=this.props
@@ -53,7 +54,7 @@ class Register extends Component {
             }
         this.props.saveData(dataRegister, idUser)
         console.log(dataRegister)
-        this.props.update(dataRegister)
+        await this.props.setData(dataRegister)
         this.props.history.push('/Login')
         console.log("register") 
         }
@@ -96,5 +97,13 @@ class Register extends Component {
           );
     }
 }
- 
-export default Register;
+
+const mapStateToProps = state => ({
+    data: state.data.dataUser
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    setData: (data) => dispatch({type: "addUser",  payload: {dataUser : data}
+    })
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

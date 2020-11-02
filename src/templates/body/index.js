@@ -88,7 +88,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    update: (data) => dispatch({type: "addUser",  payload: {dataUser : data}
+    setData: (data) => dispatch({type: "addUser",  payload: {dataUser : data}
     })
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Body)
