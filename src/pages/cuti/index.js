@@ -14,7 +14,7 @@ class Cuti extends Component {
                 nama: "homo sapiens",
                 jabatan: "Application Owner",
                 roleType: 1,
-            }],
+            }], 
             dataKaryawan:props.dataKaryawan, //Redux
             userCuti: props.userCuti // Redux
     }
@@ -45,7 +45,6 @@ class Cuti extends Component {
     }
 
     render() {
-        
         console.log (this.state)
         return ( 
         <>
@@ -55,7 +54,7 @@ class Cuti extends Component {
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>User ID</th>
+                    <th>Nama Karyawan</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
                     <th>Alasan</th>
@@ -65,16 +64,16 @@ class Cuti extends Component {
                 </thead>
             <tbody>
         {
-        this.state.userCuti.map((user,idx) =>{
+        this.state.userCuti.map((cuti,idx) =>{
         return      <tr key={idx}>
                     <td>{idx+1}</td>
-                    <td>{user.userId}</td> 
-                    <td>{user.tanggalPengajuan}</td> 
-                    <td>{user.tanggalBerakhir}</td> 
-                    <td>{user.alasan}</td> 
-                    <td>{user.statusPengajuan}</td>
+                    <td>{cuti.userNama}</td> 
+                    <td>{cuti.tanggalPengajuan}</td> 
+                    <td>{cuti.tanggalBerakhir}</td> 
+                    <td>{cuti.alasan}</td> 
+                    <td>{cuti.statusPengajuan}</td>
                     <td>
-                        { user.roleType === 0  ?
+                        { cuti.roleType === 0  ?
                         <>
                         <Button onClick={this.editCuti}>Edit</Button>
                         <Button onClick={this.deleteCuti}>Delete</Button>

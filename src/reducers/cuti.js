@@ -4,6 +4,7 @@ const initialState = {
   userCuti:[
     {
     userId:1,
+    userNama:"Jono Sujono",
     cutiId:1,
     tanggalPengajuan:"12-12-2020",
     tanggalBerakhir:"15-12-2020",
@@ -12,6 +13,7 @@ const initialState = {
   },
   {
     userId:1,
+    userNama:"Jono Sujono",
     cutiId:2,
     tanggalPengajuan:"12-12-2020",
     tanggalBerakhir:"30-12-2020",
@@ -20,6 +22,7 @@ const initialState = {
   },
   {
     userId:5,
+    userNama:"Ismail bin Mail",
     cutiId:3,
     tanggalPengajuan:"12-12-2020",
     tanggalBerakhir:"20-12-2020",
